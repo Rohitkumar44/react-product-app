@@ -19,7 +19,7 @@ spec:
         app: backdeploy
     spec:
       containers:
-      - image: 026090545815.dkr.ecr.us-east-1.amazonaws.com/projectback:latest
+      - image: 535002878565.dkr.ecr.us-east-1.amazonaws.com/three-tier-backend:latest
         name: projectback
         resources: {}
 status: {}

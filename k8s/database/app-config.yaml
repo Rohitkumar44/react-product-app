@@ -4,4 +4,4 @@ metadata:
   name: app-config
   namespace: project
 data:
-  DB_URL: jdbc:mysql://goods.cluster-cf028ok825zn.us-east-1.rds.amazonaws.com:3306/goods
+  DB_URL: jdbc:mysql://expense.cluster-cz8gii8scoo5.us-east-1.rds.amazonaws.com:3306/expense
