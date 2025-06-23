@@ -1,5 +1,5 @@
 # Use the official Maven image as the base image
-FROM public.ecr.aws/maven/maven:3.8.4-openjdk-17 AS build
+public.ecr.aws/amazoncorretto/amazoncorretto:17
 # Set the working directory
 WORKDIR /app
 
