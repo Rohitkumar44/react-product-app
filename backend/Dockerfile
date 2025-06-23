@@ -1,3 +1,23 @@
+# Stage 1: build with Maven (has mvn)
+FROM maven:3.9.3-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+COPY pom.xml /app/
+COPY src /app/src/
+
+RUN mvn clean package -Dmaven.test.skip=true
+
+# Stage 2: run with Amazon Corretto (JDK only, no Maven)
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]
 # Build stage: Use Maven official image (with JDK 17)
 FROM maven:3.9.3-eclipse-temurin-17 AS build
 
