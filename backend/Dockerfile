@@ -1,43 +1,13 @@
-# Stage 1: build with Maven (has mvn)
-FROM maven:3.9.3-eclipse-temurin-17 AS build
+# Use lightweight JDK image to run the jar
+#FROM eclipse-temurin:17-jdk-alpine
 
-WORKDIR /app
-
-COPY pom.xml /app/
-COPY src /app/src/
-
-RUN mvn clean package -Dmaven.test.skip=true
-
-# Stage 2: run with Amazon Corretto (JDK only, no Maven)
 FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
 
-WORKDIR /app
-
-COPY --from=build /app/target/*.jar app.jar
-
-EXPOSE 8080
-
-CMD ["java", "-jar", "app.jar"]
-# Build stage: Use Maven official image (with JDK 17)
-FROM maven:3.9.3-eclipse-temurin-17 AS build
 
 WORKDIR /app
+# Copy the jar from the target folder
+COPY target/*.jar app.jar
 
-# Copy pom.xml and source code
-COPY ./pom.xml /app/
-COPY ./src /app/src/
-
-# Build the application skipping tests
-RUN mvn clean package -Dmaven.test.skip=true
-
-# Runtime stage: Use Amazon Corretto 17 JDK image (no Maven here)
-FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
-
-WORKDIR /app
-
-# Copy the built jar from the build stage
-COPY --from=build /app/target/*.jar app.jar
-
-EXPOSE 8080
-
-CMD ["java", "-jar", "app.jar"]
+# Expose the default Spring Boot port
+EXPOSE 80
+ENTRYPOINT ["java", "-jar", "app.jar"]
