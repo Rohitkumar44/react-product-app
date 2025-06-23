@@ -28,6 +28,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: backend-service
+                name: springboot-backend
                 port:
                   number: 8080

@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   variables:
-    ACCOUNT_ID: 026090545815
+    ACCOUNT_ID: 535002878565
     REGION: us-east-1
-    FRONTEND_REPO: projectfront
-    BACKEND_REPO: projectback
+    FRONTEND_REPO: three-tier-frontend
+    BACKEND_REPO: three-tier-backend
     FRONTEND_DIR: frontend
     BACKEND_DIR: backend
     K8S_MANIFEST_DIR: k8s
