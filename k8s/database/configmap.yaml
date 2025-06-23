@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: project
+data:
+  DB_URL: jdbc:mysql://goods.cluster-cf028ok825zn.us-east-1.rds.amazonaws.com:3306/goods
