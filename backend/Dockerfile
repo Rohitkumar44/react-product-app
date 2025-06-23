@@ -1,6 +1,5 @@
 # Use the official Maven image as the base image
-FROM maven:3.8.4-openjdk-17 AS build
-
+FROM public.ecr.aws/maven/maven:3.8.4-openjdk-17 AS build
 # Set the working directory
 WORKDIR /app
 
@@ -12,7 +11,7 @@ COPY ./src /app/src
 RUN mvn clean package -Dmaven.test.skip=true
 
 # Create a new image for running the application
-FROM openjdk:17-jdk
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
 
 # Set the working directory
 WORKDIR /app
