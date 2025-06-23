@@ -56,8 +56,8 @@ phases:
       - cp $K8S_MANIFEST_DIR/namespace.yaml k8s-out/namespace.yaml || true
       - cp $K8S_MANIFEST_DIR/database/pv.yaml k8s-out/database-pv.yaml || true
       - cp $K8S_MANIFEST_DIR/database/pvc.yaml k8s-out/database-pvc.yaml || true
-      - cp $K8S_MANIFEST_DIR/databse/app-config.yaml k8s-out/app-config.yaml || true
-      - cp $K8S_MANIFEST_DIR/database/secrets.yaml k8s-out/secrets.yaml || true
+      - cp $K8S_MANIFEST_DIR/databse/app-config.yaml k8s-out/database-app-config.yaml || true
+      - cp $K8S_MANIFEST_DIR/database/secrets.yaml k8s-out/database-secrets.yaml || true
       - cp $K8S_MANIFEST_DIR/database/deployment.yaml k8s-out/database-deployment.yaml || true
       - cp $K8S_MANIFEST_DIR/database/service.yaml k8s-out/database-service.yaml || true
       - cp $K8S_MANIFEST_DIR/ingress.yaml k8s-out/ingress.yaml || true
