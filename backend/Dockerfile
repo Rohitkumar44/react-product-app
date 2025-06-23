@@ -1,22 +1,23 @@
-# Use the official Maven image as the base image
+# Use the official Amazon Corretto 17 image as the base image for build stage
 FROM public.ecr.aws/amazoncorretto/amazoncorretto:17 AS build
+
 # Set the working directory
 WORKDIR /app
 
-# Copy the pom.xml and any other necessary configuration files
+# Copy the pom.xml and source code
 COPY ./pom.xml /app
 COPY ./src /app/src
 
-# Build the application
-RUN mvn clean package -Dmaven.test.skip=true
+# Build the application using Maven wrapper if you have it, otherwise Maven should be installed in the build image
+RUN ./mvnw clean package -Dmaven.test.skip=true || mvn clean package -Dmaven.test.skip=true
 
-# Create a new image for running the application
-public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
+# Use Amazon Corretto 17 non-alpine image as the runtime base image
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
 
-# Set the working directory
+# Set the working directory in the runtime image
 WORKDIR /app
 
-# Copy the built JAR file from the previous stage
+# Copy the built jar file from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port on which the Spring Boot application will run
