@@ -11,7 +11,7 @@ COPY ./src /app/src
 RUN mvn clean package -Dmaven.test.skip=true
 
 # Create a new image for running the application
-FROM public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
+public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
 
 # Set the working directory
 WORKDIR /app
