@@ -1,5 +1,5 @@
 # Build stage
-FROM public.ecr.aws/docker/library/node:14
+FROM public.ecr.aws/docker/library/node:14 AS build
 
 WORKDIR /app
 
@@ -29,3 +29,4 @@ EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
