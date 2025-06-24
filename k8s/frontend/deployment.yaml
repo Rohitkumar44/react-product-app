@@ -19,7 +19,7 @@ spec:
         app: frontdeploy
     spec:
       containers:
-      - image: 026090545815.dkr.ecr.us-east-1.amazonaws.com/projectfront:latest
+      - image: 535002878565.dkr.ecr.us-east-1.amazonaws.com/three-tier-frontend:latest
         name: projectfront
         resources: {}
 status: {}
