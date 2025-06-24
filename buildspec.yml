@@ -36,13 +36,18 @@ phases:
       - cd $FRONTEND_DIR && npm install && cd -
       - echo Building backend with Maven...
       - cd $BACKEND_DIR && mvn clean package -DskipTests && cd -
-      - echo Running SonarQube scanner...
-      - sonar-scanner -Dsonar.projectKey=reactsonar -Dsonar.sources=. -Dsonar.host.url=http://54.204.237.210 -Dsonar.login=sqp_f74a7b77d4230ebb4d881a39500e2ae6dadce4c1
 
   build:
     commands:
       - echo Adding sonar-scanner to PATH...
       - export PATH=$PATH:$PWD/sonar-scanner-4.8.0.2856-linux/bin
+      - echo Running SonarQube scanner...
+      - sonar-scanner \
+          -Dsonar.projectKey=reactsonar \
+          -Dsonar.sources=. \
+          -Dsonar.java.binaries=backend/target/classes \
+          -Dsonar.host.url=http://54.204.237.210 \
+          -Dsonar.login=sqp_f74a7b77d4230ebb4d881a39500e2ae6dadce4c1
       - echo Building Docker images...
       - docker build -t $FRONTEND_REPO:$IMAGE_TAG $FRONTEND_DIR || { echo "Frontend Docker build failed"; exit 1; }
       - docker tag $FRONTEND_REPO:$IMAGE_TAG ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/$FRONTEND_REPO:$IMAGE_TAG
