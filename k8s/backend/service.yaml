@@ -6,7 +6,7 @@ metadata:
   labels:
     app: backdeploy
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: backdeploy
   ports:
