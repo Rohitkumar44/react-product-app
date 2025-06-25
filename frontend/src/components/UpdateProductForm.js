@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from "react";
+import React, {useContext, useEffect} from "react";
 import {getProductById, updateProductById} from "../services/ApiService";
 import {NavLink, useNavigate, useParams} from 'react-router-dom';
 import {ProductContext} from "../context/ProductContext";
@@ -32,7 +32,7 @@ export default function UpdateProductForm() {
     }
 
     fetchData();
-  }, []);
+  }, [id, updateProduct]);
 
   const handleChange = (event) => {
     const { id, value } = event.target;

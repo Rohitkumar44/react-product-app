@@ -9,17 +9,18 @@ export default function ProductList() {
   const { products, updateProducts } = useContext(ProductContext);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const products = await getProducts();
-        updateProducts(products);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
+  async function fetchData() {
+    try {
+      const products = await getProducts();
+      updateProducts(products);
+    } catch (error) {
+      console.error('Error fetching products:', error);
     }
+  }
 
-    fetchData();
-  }, []);
+  fetchData();
+}, [updateProducts]);
+
 
   return(
     <div>

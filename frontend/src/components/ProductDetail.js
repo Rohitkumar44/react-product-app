@@ -21,7 +21,7 @@ export default function ProductDetail() {
     }
 
     fetchData();
-  }, []);
+  }, [id, updateProduct]);
 
   async function deleteProduct() {
     try {
