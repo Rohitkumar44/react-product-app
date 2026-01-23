@@ -1,11 +1,3 @@
-### React Product App using Spring Boot as the backend
-![alt text](react-product-app.png)
-
-## Overview
-This repository hosts the `#TWSThreeTierAppChallenge` for the TWS community. 
-The challenge involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and Arura RDS MySQL, with deployment on AWS EKS. Participants are encouraged to deploy the application, add creative enhancements, and submit a Pull Request (PR). Merged PRs will earn exciting prizes!
-
-
 
 ## Prerequisites
 - Basic knowledge of Docker, and AWS services.
@@ -119,14 +111,3 @@ Stop or Terminate the EC2 instance created in step 2.
 Delete the Load Balancer created in step 9 and 10.
 Go to EC2 console, access security group section and delete security groups created in previous steps
 ```
-
-## Contribution Guidelines
-- Fork the repository and create your feature branch.
-- Deploy the application, adding your creative enhancements.
-- Ensure your code adheres to the project's style and contribution guidelines.
-- Submit a Pull Request with a detailed description of your changes.
-
-
-
-## Support
-For any queries or issues, please open an issue in the repository.
